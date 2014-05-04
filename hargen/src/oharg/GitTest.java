@@ -1,4 +1,4 @@
-package hargen;
+package oharg;
 
 public class GitTest {
 
