@@ -14,4 +14,21 @@
 	<natures>
 		<nature>org.eclipse.jdt.core.javanature</nature>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>lib</name>
+			<type>2</type>
+			<locationURI>USER_LIB</locationURI>
+		</link>
+	</linkedResources>
+	<variableList>
+		<variable>
+			<name>USER</name>
+			<value>file:/C:/Users/MURPH</value>
+		</variable>
+		<variable>
+			<name>USER_LIB</name>
+			<value>$%7BUSER%7D/lib</value>
+		</variable>
+	</variableList>
 </projectDescription>
