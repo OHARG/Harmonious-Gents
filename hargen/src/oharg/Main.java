@@ -1,5 +1,5 @@
 /**
- * The main class and embodiment of the game.
+ * The main or starting class of the game.
  * 
  * @author Christopher Murphy
  * @version 1.0a May 5, 2014
@@ -17,15 +17,29 @@ import org.newdawn.slick.SlickException;
 
 public class Main extends BasicGame {
     
+    // testing render() using basic animation/iteration
+    private int lineAnimY;
+    private int lineAnimX;
+    private int anim;
+    private int slowTick;
+    private int count;
+    
     // TODO move Game class to separate file
-    static class Game {
-        public static int width = 1024;
-        public static int height = (int)(width * 3 / 4.0);
+    public static class Game {
+        public static int width = 960;
+        public static int height = (int)(width * 9 / 16.0);
         public static boolean fullScreen = false;
+        public static int ups = 200;
     }
 
     public Main(String title) {
         super(title);
+        
+        lineAnimY = 0;
+        lineAnimX = 0;
+        anim = 0;
+        slowTick = 0;
+        count = 0;
     }
 
     public static void main(String[] args) throws SlickException {
@@ -35,12 +49,16 @@ public class Main extends BasicGame {
         // TODO implement pop-up dialogue prior to app.start() to query fields in Game class
         
         app.setDisplayMode(Game.width, Game.height, Game.fullScreen);
-        app.start();
         
+        app.start();
     }
 
     @Override
     public void render(GameContainer gc, Graphics g) throws SlickException {
+        
+        g.setColor(Color.white);
+        g.drawLine(0, lineAnimY, Game.width, Game.height - lineAnimY);
+        g.drawLine(Game.width - lineAnimX, 0, lineAnimX, Game.height);
         
         String message = "Aprox. Middle\n  of Screen";
         Font f = g.getFont();
@@ -48,14 +66,19 @@ public class Main extends BasicGame {
         int strHeight = f.getHeight(message);
         int strX = Game.width / 2 - strWidth / 2;
         int strY = Game.height / 2 - strHeight;
-        int buffer = 25; // padding in pixels
         
-        g.setColor(Color.darkGray);
-        g.fillRoundRect(strX - 2 * buffer, strY - 2 * buffer, strWidth + 4 * buffer, strHeight + 4 * buffer, 4 * buffer);
+        int buffer = 20; // max padding in pixels for rounding rectangle edges
+        int animA = slowTick % (2 * buffer);
+        int round = animA > buffer ? 2 * buffer - animA : animA; // rounding 0 to buffer, then back to 0
+        round += 10; // min buffer
+        
+        g.setColor(new Color(anim % 256, 255 - anim % 256, anim % 128));
+        g.fillRoundRect(strX - 2 * round, strY - 2 * round, strWidth + 4 * round, strHeight + 4 * round, 4 * round);
         g.setColor(Color.white);
-        g.fillRoundRect(strX - buffer, strY - buffer, strWidth + 2 * buffer, strHeight + 2 * buffer, 2 * buffer);
+        g.fillRoundRect(strX - round, strY - round, strWidth + 2 * round, strHeight + 2 * round, 2 * round);
         g.setColor(Color.black);
         g.drawString(message, strX, strY);
+
     }
 
     @Override
@@ -65,8 +88,24 @@ public class Main extends BasicGame {
     }
 
     @Override
-    public void update(GameContainer arg0, int arg1) throws SlickException {
-        // TODO Auto-generated method stub
+    public void update(GameContainer gc, int msDelta) throws SlickException {
+        
+        count += msDelta;
+        if(count < 1e3 / Game.ups) {
+            return;
+        }
+        count = 0; // reset
+
+        int skipFrames = 2;
+        for(int i = 0; i < skipFrames; i++) {
+            lineAnimX = ++lineAnimX % Game.width;
+            lineAnimY = (int)((double)lineAnimX / Game.width * Game.height); // y coordinate is a percentage of the total x distance traveled
+        }
+        
+        anim = ++anim % 1000;
+        if(anim % 20 == 0) {
+            slowTick++;
+        }
         
     }
 
