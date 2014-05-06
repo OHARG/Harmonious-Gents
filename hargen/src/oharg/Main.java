@@ -1,6 +1,10 @@
 /**
  * The main or starting class of the game.
  * 
+ * Initial help from TheBinaryAddiction on Youtube
+ * https://www.youtube.com/playlist?list=PL5A34D064E4500D18
+ * Warning! The series is intended for complete programming idiots!
+ * 
  * @author Christopher Murphy
  * @version 1.0a May 5, 2014
  */
