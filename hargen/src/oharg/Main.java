@@ -13,9 +13,12 @@ import org.newdawn.slick.Color;
 import org.newdawn.slick.Font;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
+import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 
 public class Main extends BasicGame {
+    
+    Image image;
     
     // testing render() using basic animation/iteration
     private int lineAnimY;
@@ -44,7 +47,7 @@ public class Main extends BasicGame {
 
     public static void main(String[] args) throws SlickException {
         
-        AppGameContainer app = new AppGameContainer(new Main("Slick2D Engine | Testing"));
+        AppGameContainer app = new AppGameContainer(new Main("Harmonious-Gents | hargen"));
         
         // TODO implement pop-up dialogue prior to app.start() to query fields in Game class
         
@@ -79,11 +82,13 @@ public class Main extends BasicGame {
         g.setColor(Color.black);
         g.drawString(message, strX, strY);
 
+        g.drawImage(image, Game.width / 2 - image.getWidth() / 2, 40);
+        
     }
 
     @Override
     public void init(GameContainer arg0) throws SlickException {
-        // TODO Auto-generated method stub
+        image = new Image("harmonious-gents.jpg");
         
     }
 
