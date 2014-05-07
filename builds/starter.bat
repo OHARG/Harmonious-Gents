@@ -19,7 +19,7 @@ SET /P INPUT= :
 :RUN
 echo loading: %INPUT%
 echo.
-java -Djava.library.path="C:\Users\MURPH\git\Harmonious-Gents\builds\hargen\lib\natives" -Xmx1024M -Xms1024M -jar %INPUT%
+java -Djava.library.path="hargen\lib\natives" -Xmx1024M -Xms1024M -jar %INPUT%
 
 :END
 pause
