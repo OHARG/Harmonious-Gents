@@ -29,7 +29,10 @@ public class Main extends BasicGame {
     private int lineAnimX;
     private int anim;
     private int slowTick;
+    private int reallySlowTick;
     private int count;
+    
+    private long now;
     
     // TODO move Game class to separate file
     public static class Game {
@@ -46,7 +49,9 @@ public class Main extends BasicGame {
         lineAnimX = 0;
         anim = 0;
         slowTick = 0;
+        reallySlowTick = 0;
         count = 0;
+        now = System.nanoTime();
     }
 
     public static void main(String[] args) throws SlickException {
@@ -112,8 +117,13 @@ public class Main extends BasicGame {
         }
         
         anim = ++anim % 1000;
-        if(anim % 20 == 0) {
+        if(anim % 10 == 0) {
             slowTick++;
+        	reallySlowTick++;
+            
+        }
+        if(reallySlowTick % 500 == 0) {
+            System.out.println(System.nanoTime() - now);
         }
         
     }
