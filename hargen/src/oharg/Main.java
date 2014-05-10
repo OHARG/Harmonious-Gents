@@ -132,9 +132,11 @@ public class Main extends BasicGame {
         if(anim % 10 == 5) {
             this.slowTick = ++slowTick % 100;
             
+            // UPS / 100
             if(slowTick % 10 == 8) {
                 this.reallySlowTick = ++reallySlowTick % 10;
                 
+                // UPS / 200
                 if(reallySlowTick % 2 == 0) {
                     upsMessage = "" + preAverage / 200;
                     this.preAverage = 0;
