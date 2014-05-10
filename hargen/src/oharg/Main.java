@@ -39,10 +39,19 @@ public class Main extends BasicGame {
     
     // TODO move Game class to separate file
     public static class Game {
+        public static final String TEXTURES = "/res/textures/";
+        
+        public static boolean lock = false;
         public static int width = 960;
         public static int height = (int)(width * 9 / 16.0);
         public static boolean fullScreen = false;
         public static int ups = 200;
+        
+        public static boolean status() { return lock; }
+        
+        public static void lock() { lock = true; }
+        
+        public static void unLock() { lock = false; }
     }
 
     public Main(String title) {
@@ -58,7 +67,7 @@ public class Main extends BasicGame {
         now = System.nanoTime();
         preAverage = 0;
         
-        upsMessage = "UPS";
+        upsMessage = "0";
     }
 
     public static void main(String[] args) throws SlickException {
@@ -107,7 +116,7 @@ public class Main extends BasicGame {
 
     @Override
     public void init(GameContainer arg0) throws SlickException {
-        image = new Image("harmonious-gents.jpg");
+        image = new Image(Game.TEXTURES + "/harmonious-gents.jpg");
         
     }
 
@@ -130,7 +139,7 @@ public class Main extends BasicGame {
         // UPS / 10
         this.anim = ++anim % 1000;
         if(anim % 10 == 5) {
-            this.slowTick = ++slowTick % 100;
+            this.slowTick = ++slowTick % 80;
             
             // UPS / 100
             if(slowTick % 10 == 8) {
