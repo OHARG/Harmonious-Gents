@@ -1,9 +1,9 @@
 /**
  * The main or starting class of the game.
  * 
- * Initial help from TheBinaryAddiction on Youtube
+ * Initial help from TheBinaryAddiction on Youtube.com
  * https://www.youtube.com/playlist?list=PL5A34D064E4500D18
- * Warning! The series is intended for complete programming idiots!
+ * Warning! The series is intended for excessively novice programmers!
  * 
  * @author Christopher Murphy
  * @version 1.0a May 5, 2014
@@ -33,6 +33,9 @@ public class Main extends BasicGame {
     private int count;
     
     private long now;
+    private long preAverage;
+    
+    private String upsMessage;
     
     // TODO move Game class to separate file
     public static class Game {
@@ -51,7 +54,11 @@ public class Main extends BasicGame {
         slowTick = 0;
         reallySlowTick = 0;
         count = 0;
+        
         now = System.nanoTime();
+        preAverage = 0;
+        
+        upsMessage = "UPS";
     }
 
     public static void main(String[] args) throws SlickException {
@@ -93,6 +100,9 @@ public class Main extends BasicGame {
 
         g.drawImage(image, Game.width / 2 - image.getWidth() / 2, 40);
         
+        g.setColor(Color.white);
+        g.drawString(upsMessage, 55, 25);
+        
     }
 
     @Override
@@ -104,6 +114,7 @@ public class Main extends BasicGame {
     @Override
     public void update(GameContainer gc, int msDelta) throws SlickException {
         
+        // base UdatesPerSecond (UPS)
         count += msDelta;
         if(count < 1e3 / Game.ups) {
             return;
@@ -116,15 +127,22 @@ public class Main extends BasicGame {
             lineAnimY = (int)((double)lineAnimX / Game.width * Game.height); // y coordinate is a percentage of the total x distance traveled
         }
         
-        anim = ++anim % 1000;
-        if(anim % 10 == 0) {
-            slowTick++;
-        	reallySlowTick++;
+        // UPS / 10
+        this.anim = ++anim % 1000;
+        if(anim % 10 == 5) {
+            this.slowTick = ++slowTick % 100;
             
+            if(slowTick % 10 == 8) {
+                this.reallySlowTick = ++reallySlowTick % 10;
+                
+                if(reallySlowTick % 2 == 0) {
+                    upsMessage = "" + preAverage / 200;
+                    this.preAverage = 0;
+                }
+            }
         }
-        if(reallySlowTick % 500 == 0) {
-            System.out.println(System.nanoTime() - now);
-        }
+        this.now = System.nanoTime() % 10000;
+        this.preAverage += now;
         
     }
 
