@@ -22,4 +22,6 @@ echo.
 java -Djava.library.path="hargen\lib\natives" -Xmx1024M -Xms1024M -jar %INPUT%
 
 :END
+
+echo.
 pause
