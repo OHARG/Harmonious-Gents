@@ -1,7 +1,7 @@
 package oharg;
 
 public class Game {
-    public static final String TEXTURES = "/res/textures/";
+    public static final String TEXTURES = "/res/textures";
     
     public static boolean lock = false;
     public static int width = 960;

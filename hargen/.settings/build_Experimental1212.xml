@@ -3,12 +3,16 @@
     <!--this file was created by Eclipse Runnable JAR Export Wizard-->
     <!--ANT 1.7 is required                                        -->
     <target name="create_run_jar">
-        <jar destfile="C:/Users/MURPH/git/Harmonious-Gents/builds/hargen/10-05-14-i.jar">
+        <jar destfile="C:/Users/MURPH/git/Harmonious-Gents/builds/hargen/11-05-14-i.jar">
             <manifest>
                 <attribute name="Main-Class" value="oharg.Main"/>
-                <attribute name="Class-Path" value=". lib/lwjgl.jar lib/slick.jar"/>
+                <attribute name="Class-Path" value=". 11-05-14-i_lib/lwjgl.jar 11-05-14-i_lib/slick.jar"/>
             </manifest>
             <fileset dir="C:/Users/MURPH/git/Harmonious-Gents/hargen/bin"/>
         </jar>
+        <delete dir="C:/Users/MURPH/git/Harmonious-Gents/builds/hargen/11-05-14-i_lib"/>
+        <mkdir dir="C:/Users/MURPH/git/Harmonious-Gents/builds/hargen/11-05-14-i_lib"/>
+        <copy file="C:/Users/MURPH/lib/lwjgl/jar/lwjgl.jar" todir="C:/Users/MURPH/git/Harmonious-Gents/builds/hargen/11-05-14-i_lib"/>
+        <copy file="C:/Users/MURPH/lib/slick/lib/slick.jar" todir="C:/Users/MURPH/git/Harmonious-Gents/builds/hargen/11-05-14-i_lib"/>
     </target>
 </project>

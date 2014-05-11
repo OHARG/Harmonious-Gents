@@ -99,7 +99,7 @@ public class Main extends BasicGame {
 
     @Override
     public void init(GameContainer arg0) throws SlickException {
-        image = new Image(Game.TEXTURES + "/harmonious-gents.jpg");
+        image = new Image(/*Game.TEXTURES + */"harmonious-gents.jpg");
         
     }
 
