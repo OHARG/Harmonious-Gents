@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project default="create_run_jar" name="Create Runnable Jar for Project hargen with libraries in sub-folder">
+    <!--this file was created by Eclipse Runnable JAR Export Wizard-->
+    <!--ANT 1.7 is required                                        -->
+    <target name="create_run_jar">
+        <jar destfile="C:/Users/MURPH/git/Harmonious-Gents/builds/hargen/10-05-14-i.jar">
+            <manifest>
+                <attribute name="Main-Class" value="oharg.Main"/>
+                <attribute name="Class-Path" value=". lib/lwjgl.jar lib/slick.jar"/>
+            </manifest>
+            <fileset dir="C:/Users/MURPH/git/Harmonious-Gents/hargen/bin"/>
+        </jar>
+    </target>
+</project>
