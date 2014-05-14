@@ -2,7 +2,7 @@
  * A template for all human controlled characters
  * 
  */
-package com.oharg.game;
+package com.oharg.game.entity;
 
 /**
  * @author Christopher Murphy
@@ -10,5 +10,5 @@ package com.oharg.game;
  *
  */
 public class Player {
-
+    
 }
