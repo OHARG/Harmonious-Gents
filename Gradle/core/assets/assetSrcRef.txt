@@ -1,0 +1,4 @@
+fonts
+- Fontsquirrel.com 100% Free For Commercial Use. "http://www.fontsquirrel.com"
+
+All droptest assets at "https://github.com/libgdx/libgdx/wiki/A-simple-game"
