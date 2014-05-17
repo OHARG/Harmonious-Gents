@@ -21,6 +21,13 @@ import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.TimeUtils;
 
+/** 
+ * Root class of the Application Lifecycle
+ * 
+ * @author Christopher Murphy
+ * @version 1.0
+ *
+ */
 public class Main implements ApplicationListener {
    Texture dropImage;
    Texture bucketImage;
