@@ -24,7 +24,7 @@ import com.badlogic.gdx.utils.TimeUtils;
 /** 
  * Root class of the Application Lifecycle
  * 
- * @author Christopher Murphy
+ * @author Christopher Murphy, Walter Keyes
  * @version 1.0
  *
  */
